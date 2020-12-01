@@ -7,7 +7,7 @@ let speed = 1;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   for (let i = 0; i < width / 10; i++) {
-    values[i] = random(height);
+    values[i] = random(5, height);
   }
 }
 

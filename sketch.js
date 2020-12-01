@@ -2,12 +2,15 @@ let values = [];
 
 let i = 0;
 let j = 0;
-let speed = 1;
+let speed;
+let slider;
 
 function setup() {
+  // createCanvas(720, 480);
   createCanvas(windowWidth, windowHeight);
+  slider = createSlider(1, 50, 2);
   for (let i = 0; i < width / 10; i++) {
-    values[i] = random(5, height);
+    values[i] = random(height);
   }
 }
 
@@ -15,25 +18,26 @@ function draw() {
   background(51);
   stroke(220);
   strokeWeight(2);
+  speed = slider.value();
 
-  // for (let m = 0; m < speed; m++) {
-  let a = values[j]
-  let b = values[j + 1];
+  for (let m = 0; m < speed; m++) {
+    let a = values[j]
+    let b = values[j + 1];
 
-  if (a > b) {
-    swap(values, j, j + 1);
-  }
-  if ( i < values.length) {
-    j ++;
-    if (j >= values.length - i - 1) {
-      j = 0;
-      i ++;
+    if (a > b) {
+      swap(values, j, j + 1);
     }
-  } else {
-    console.log('FINISHED');
-    noLoop();
+    if ( i < values.length) {
+      j ++;
+      if (j >= values.length - i - 1) {
+        j = 0;
+        i ++;
+      }
+    } else {
+      console.log('FINISHED');
+      noLoop();
+    }
   }
-  // }
 
 
   for (let n = 0; n < values.length; n++) {
